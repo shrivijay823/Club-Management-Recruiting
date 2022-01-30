@@ -83,6 +83,11 @@ def signout(request):
     return HttpResponseRedirect(reverse('svceClubMgmtApp:index'))
 
 def club(request,nm):
+    if request.user.is_authenticated:
+        clublist=Club.objects.filter(name=nm)[0]
+        if request.user.is_superuser:
+            if not clublist.president_username==request.user.username:
+                return HttpResponse('Access denied or Page not found')
     clublist=Club.objects.filter(name=nm)[0]
     print(clublist)
     about=clublist.about

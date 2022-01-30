@@ -3,29 +3,48 @@
 {%block index%}
 <style>
     #clublist{
-        width: fit-content;
         margin: auto;
-        padding: 0;
+        padding: 4rem 1rem;
         list-style-type: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
     }
-    .club{
-        margin-top: 100px;
+    .container{
+        width: 20rem;
+        height: 26.5rem;
+        background-color: white;
+        min-width: 15rem;
+        margin: 1rem;
+        background: #FFFFFF;
+        box-shadow: 0px 12px 24px rgba(18, 38, 63, 0.158);
+        border-radius: 4px;   
     }
-    #clublist a:hover{
-        text-decoration: none;
+    .container a{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
     }
-    .imgContainer{
-        width: 40%;
-        margin: auto;
+    .imgContainer {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 3rem 0rem;
+
     }
     .imgContainer img{
-        width: 50%;
+        width: 90%;
     }
-    .clubname{
-        text-align: center;
-    }
-    .clubname{
-        color: white;
+    .clubname p {
+        font-family: 'Poppins', sans-serif;
+        font-size: 30px;
+        font-weight: 600;
+        letter-spacing: 3px;
+        color: black;
     }
 </style>
 <ul id="clublist">
