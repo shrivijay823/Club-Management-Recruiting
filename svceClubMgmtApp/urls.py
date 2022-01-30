@@ -12,4 +12,5 @@ urlpatterns = [
     path('president/<str:nm>/e_a_r',views.actrec,name='enable_actively_recruit'),
     path('president/<str:nm>/e_a_r',views.actrec,name='disable_actively_recruit'),
     path('club/<str:nm>/registration',views.register,name='recruit'),
+    path('club/<str:nm>/requirements/',views.requirements,name='requirements'),
 ]

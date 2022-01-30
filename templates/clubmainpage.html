@@ -1,60 +1,25 @@
-{%extends 'base.html'%}
-{%load static%}
-{%block clubPage%}
-    <style>
-        .clubcontent{
-            width: 50%;
-            margin: auto;
-        }
-        button{
-            margin: auto;
-        }
-        .items{
-            margin-right: 10px;
-        }
-        #sidebar li{
-            list-style-type: none;
-        }
-        #sidebar a{
-            color: black;
-        }
-        #contents{
-            margin-top: 10px;
-        }
-        .eventlist{
-            margin-left: -15px;
-            margin-right: -15px;
-        }
-        .eventcontainer{
-            margin-top: 30px;
-        }
-        #event,#upevents,#registernow{
-            display: none;
-        }
-
-    </style><div id="menus" class="clubcontent">
+{%extends 'clubpage.html'%}
+{%block clubmainpage%}
+<div id="menus" class="clubcontent">
     <a class="items" onclick="showAbout();" href="#">About</a>
     <a class="items" onclick="showEvent();" href="#">Events</a>
     <a class="items" onclick="showUpEve();" href="#">Upcoming Events</a>
 </div>
 <div id="contents">
-    <div class="clubcontent">
-        <h1 id="ClubName">{{clublist.name}}</h1> 
-    </div>
-    <div  class="clubcontent" id="about">          
+    <h1 id="ClubName">{{clublist.name}}</h1> 
+    <div  class="clubcontent" id="about">
+        <h1 id="ClubName">{{clublist.name}}</h1>   
         <p>
             {%for p in clublist.about%}
             {{p}}<br><br>
             {%endfor%}
         </p>
-        {%if user.is_authenticated and not user.is_superuser and clublist.recruiting%}
-        <div style="text-align: center;">
-            <a href="{%url 'svceClubMgmtApp:requirements' clublist.name%}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Actively recruiting</a>
-        </div>
-        {%endif%}
     </div>
-    
-    {%if user.is_authenticated and user.is_superuser and clublist.recruiting%}
+    {%if user.is_authenticated and not user.is_superuser and clublist.recruiting%}
+    <div style="text-align: center;">
+        <a href="#" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Actively recruiting</a>
+    </div>
+    {%elif user.is_authenticated and user.is_superuser and clublist.recruiting%}
     <div style="text-align: center;">
         <a href="{%url 'svceClubMgmtApp:enable_actively_recruit' clublist.name%}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Stop Recruitment</a>
     </div>
@@ -121,31 +86,4 @@
             {%endif%}
         </div>
     </div>
-</div> 
-    <script>
-        function showAbout(){
-            ele=document.getElementById('about');
-            ele1=document.getElementById('event');
-            ele2=document.getElementById('upevents');
-            ele.style.display="block";
-            ele1.style.display="none";
-            ele2.style.display="none";
-        }
-        function showEvent(){
-            ele1=document.getElementById('about');
-            ele=document.getElementById('event');
-            ele2=document.getElementById('upevents');
-            ele.style.display="block";
-            ele1.style.display="none";
-            ele2.style.display="none";
-        }
-        function showUpEve(){
-            ele1=document.getElementById('about');
-            ele2=document.getElementById('event');
-            ele=document.getElementById('upevents');
-            ele.style.display="block";
-            ele1.style.display="none";
-            ele2.style.display="none";
-        }
-    </script>
 {%endblock%}

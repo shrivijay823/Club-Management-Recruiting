@@ -130,4 +130,9 @@ def register(request,nm):
         clubname=Club.objects.filter(name=nm)[0].name
         return render(request,'registration.html',{'clubname':clubname})
 
+def requirements(request,nm):
+    if request.user.is_authenticated and not request.user.is_superuser:
+        clublist=Club.objects.filter(name=nm)[0]
+        return render(request,'postingpage.html',{'clublist':clublist})
+
 

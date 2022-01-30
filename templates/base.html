@@ -74,6 +74,16 @@
             padding: 20px;
             border-radius: 2px;
         }
+        footer{
+            position: absolute;
+            bottom: 0;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: rgb(223, 188, 34);
+            color: black;
+            text-align: center;
+            width: 100%;
+        }
     </style>
 </head>
 <body>
@@ -90,7 +100,7 @@
                 </div>                
             </div>
             {%else%}
-            <li><a href="login">Login</a></li>
+            <li><a href="{%url 'svceClubMgmtApp:signin'%}">Login</a></li>
             {%endif%}
         </ul>
     </nav>
@@ -98,6 +108,7 @@
     {%block register%}{%endblock%}
     {%block index%}{%endblock%}
     {%block clubPage%}{%endblock%}
+    {%block postingpage%}{%endblock%}
     {%block registration%}{%endblock%}
 </body>
 </html>
