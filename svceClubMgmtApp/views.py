@@ -120,7 +120,7 @@ def register(request,nm):
         lp=form['lp']
         vol=Volunteers(name=name,branch=branch,sec=sec,yos=yos,phoneno=phno,regno=regno,clgmailid=cmid,linkedin=lp)
         vol.save()
-        return HttpResponseRedirect(reverse('svceClubMgmtApp:recruit',kwargs={'nm':nm}))
+        return HttpResponseRedirect(reverse('svceClubMgmtApp:club',kwargs={'nm':nm}))
     if request.user.is_authenticated and not request.user.is_superuser:
         clubname=Club.objects.filter(name=nm)[0].name
         return render(request,'registration.html',{'clubname':clubname})

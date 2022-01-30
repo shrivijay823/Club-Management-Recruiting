@@ -123,6 +123,7 @@
                 {%endif%}
             </div>
         </div>
+        {%if not user.is_superuser%}
         <div class="clubcontent" id="registernow">
             {%if clublist.name == "ACE" and clublist.recruiting%}
             <div id="acereg" class="container">
@@ -384,5 +385,6 @@
             </div>
             {%endif%}
         </div>
+        {%endif%}
     </div> 
 {%endblock%}
