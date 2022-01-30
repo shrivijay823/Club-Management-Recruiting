@@ -28,12 +28,19 @@
         #contents{
             margin-top: 10px;
         }
+        .eventlist{
+            margin-left: -15px;
+            margin-right: -15px;
+        }
+        .eventcontainer{
+            margin-top: 30px;
+        }
     </style>
     <div id="sidebar">
         <ul>       
-            <li><a href="">About</a></li>
-            <li><a href="">Events</a></li>
-            <li><a href="">Upcoming Events</a></li>
+            <li><a onclick="" href="#about">About</a></li>
+            <li><a onclick="" href="#event">Events</a></li>
+            <li><a onclick="" href="#upevents">Upcoming Events</a></li>
         </ul>
     </div>
     <div id="contents">
@@ -55,13 +62,327 @@
         </div>
         {%elif user.is_authenticated and user.is_superuser and not clublist.recruiting%}
         <div style="text-align: center;">
-            <a href="{%url 'svceClubMgmtApp:enable_actively_recruit' clublist.name%}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Recruit</a>
+            <a href="{%url 'svceClubMgmtApp:disable_actively_recruit' clublist.name%}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Recruit</a>
         </div>
         {%endif%}
         <div class="clubcontent" id="event">
             <h3>Past Events</h3>
+            {%if clublist.name == "ACE"%}
+            <div id="aceevents">
+                <div class="container">
+                        <div class="row">
+                        <div><h6><a href="#">INAUGRATION</a></h6></div>
+                            <div><p>ACE Team is euphoric 🎉 in announcing its Inauguration Ceremony for this academic year 2021-22</p></div> 
+                        </div>
+                </div>
+            </div>
+            {%elif clublist.name == "ACM"%}
+            <div id="acmevents">
+                <div class="container">
+                    <div class="row">
+                        <div><h6><a href="#">THE MISSING SEMESTER</a></h6></div>
+                        <div><p>The Missing Semester was a hands-on workshop conducted by SVCE ACM Student Chapter on the 17th and 18th of October</p></div>
+                    </div>
+                </div>
+            </div>
+            {%elif clublist.name == "FORESE"%}
+            <div id="foreseevents">
+                <div><h6><a href="#">FORED</a></h6></div>
+                <div><p>For our students who are willing to add more feathers to their caps and are looking to go abroad to pursue higher 
+                    education, we organize an annual ForED fair in the odd semester</p></div>
+            </div>
+            {%endif%}
         </div>
-
-    </div>
-    
+        <div class="clubcontent" id="upevents">
+            <h3>Upcoming Events</h3>
+            <div class="container eventcontainer">
+                {%if clublist.name == "ACE"%}
+                <div id="aceevent">
+                    <div class="eventlist">
+                        <div><h6><a href="#">INTERRUPT</a></h6></div>
+                        <div><p>Interrupt is the National-level Technical Symposium hosted by ACE annually</p></div>
+                    </div>
+                </div>
+                {%elif clublist.name == "ACM"%}
+                <div id="acmevent">
+                    <div class="eventlist">
+                        <div><h6><a href="#">RAPID FIRE</a></h6></div>
+                        <div><p>Rapid fire was a problem-solving contest conducted by SVCE ACMW Student Chapter for women from all years and 
+                        departments of our college</p></div>
+                    </div>
+                    
+                </div>
+                {%elif clublist.name == "FORESE"%}
+                <div id="foreseevent">
+                    <div class="eventlist">
+                        <div><h6><a href="#">MOCK PLACEMENTS</a></h6></div>
+                        <div><p>The Mock Placements is FORESE's flagship event. This annual Preparatory event is set up exclusively for pre-final 
+                            year students from all departments</p></div>
+                    </div>
+                </div>
+                {%endif%}
+            </div>
+        </div>
+        <div class="clubcontent" id="registernow">
+            {%if clublist.name == "ACE" and clublist.recruiting%}
+            <div id="acereg" class="container">
+                <div class="row">
+                    <h4>Requirements</h4>
+                    <p><strong>&emsp;Prerequisite:</strong>
+                        <ol>
+                        <li>no backlogs</li>
+                        <li>cgpa>8</li>
+                        <li>suitable profile for the post</li>
+                        <li>A candidate is selected based on questions answered followed by an interview. The interview will be panelled by the office
+                        bearers
+                        as well as the faculty in charge.</li></ol></p>
+                        <h4>Posting Available:</h4>
+                            <ul>
+                                <li><strong>Vice President</strong> &emsp;(For Final years)</li>
+                                <li><strong>Secretary</strong>&emsp;(For Pre Final years</li>
+                                <li><strong>Treasurer</strong>&emsp;(For Pre Final years)</li>
+                                <li><strong>Joint-Secretary</strong>&emsp;(For Sophomore)</li>
+                                <li><strong>Senior Executive Member</strong>&emsp;(For Sophomore)</li>
+                                <li><strong>Executive Member</strong>&emsp;(For Sophomore)</li>
+                            </ul>
+                        <h5>Post Description:</h5>
+                            <ul>
+                                <li><strong>Vice President</strong>
+                                    <p>&emsp;&emsp; A person who manages the entire crew of the club as well as the events that are conducted.A Vice President's duties as a social club officer are similar to that of the President's duties.
+                                    Presides at meetings in the absence of the president.
+                                    <ul>
+                                    <li>Plans, coordinates, and recruits committees to manage a series of meetings and programs</li>
+                                    <li>Coordinates programs with the president and the executive committee</li>
+                                    <li>Provides timely and interesting advance information for newsletters and mailings</li>
+                                    <li>Provides or coordinates information on forthcoming events to the secretary for inclusion in meeting notices, newsletters
+                                    or electronic distribution lists.</li></ul></p>
+                                </li>
+                                <li><strong>Secretary</strong>
+                                    <p>&emsp;&emsp; A person who is part of the office of the club who works over the events that are conducted.
+                                        It is important to note that although the Secretary ensures that these responsibilities are met, much of the work may be
+                                        delegated to paid staff or volunteers.
+                                        <ul>
+                                            <li>Prepare the agenda for club/group meetings in consultation with the Chairperson.</li>
+                                             <li>Make arrangements including venue, date, times and hospitality for club meetings.</li>
+                                            <li>Send adequate notice of the meetings.</li>
+                                            <li>Collect and collate reports from office bearers.</li>
+                                            <li>Take the minutes of meetings.</li>
+                                            <li>Write up the minutes as soon as possible after the meeting.</li>
+                                        </ul>
+                                    </p>
+                                </li>
+                                <li><strong>Treasurer</strong>
+                                    <p>&emsp;&emsp; A person who looks after the funds that are involved in the club 
+                                        The Treasurer is responsible for the managing the flow of money into the club and for allocating and recording how that
+                                        money is spent to run the club.The treasurer also works in conjunction with the chairperson in planning the development
+                                        of the club.
+                                    </p>
+                                </li>
+                                <li><strong>Joint-Secretary</strong>
+                                    <p>&emsp;&emsp;A person who works with the secretary in all aspects of the club.Ensuring the smooth functioning of the club by giving enough support to the board.</p>
+                                </li>
+                                <li><strong>Senior Executive Member</strong>
+                                    <p>&emsp;&emsp; A person who takes care of the day to day tasks.Collaborates with other members of the executive committee and board of directors to create and execute exciting,
+                                    interesting events for the club constituency.Works closely with secretary and Excecutive members to promote upcoming events</p>
+                                </li>
+                                <li><strong>Executive Member</strong>
+                                    <p>&emsp;&emsp; A person who volunteers in the events that are organized.Publicizes club activities through email, social media and the club website.</p>
+                                </li>
+                            </ul>
+                </div>
+                <div class="row">
+                    <a class="btn btn-primary" href="{%url 'svceClubMgmtApp:recruit' clublist.name%}" role="button">Register now</a>
+                </div>
+            </div>
+            {%elif clublist.name == "ACM" and clublist.recruiting%}
+            <div id="acmreg" class="container">
+                <div class="row">
+                    <h4>Requirements</h4>
+                    <p><strong>&emsp;Prerequisite:</strong>
+                    <ol>
+                        <li>no backlogs</li>
+                        <li>cgpa>8</li>
+                        <li>suitable profile for the post</li>
+                        <li>Should have coding knowledge</li>
+                        <li>A candidate is selected based on questions answered followed by an interview. The
+                            interview will be panelled by the office
+                            bearers as well as the faculty in charge.</li>
+                    </ol>
+                    </p>
+                    <h4>Posting Available:</h4>
+                    <ul>
+                        <li><strong>Vice Chair</strong> &emsp;(For Final years)</li>
+                        <li><strong>Secretary</strong>&emsp;(For Pre Final years</li>
+                        <li><strong>Treasurer</strong>&emsp;(For Pre Final years)</li>
+                        <li><strong>Member Chair</strong>&emsp;(For Pre Final years)</li>
+                        <li><strong>Creative And Marketing Lead</strong>&emsp;(For Sophomores)</li>
+                        <li><strong>Web Master</strong>&emsp;(For Pre Final years and Sophomores)</li>
+                        <li><strong>Senior Executive Member</strong>(For Pre Final years and Sophomores)</li>
+                    </ul>
+                    <h5>Post Description:</h5>
+                    <ul>
+                        <li><strong>Vice Chair</strong>
+                            <p>&emsp;&emsp; A person who manages the entire crew of the club as well as the events
+                                that are conducted.A Vice President's duties as a social club officer are similar to
+                                that of the President's duties.
+                                Presides at meetings in the absence of the president.
+                            <ul>
+                                <li>Plans, coordinates, and recruits committees to manage a series of meetings and
+                                    programs</li>
+                                <li>Coordinates programs with the president and the executive committee</li>
+                                <li>Provides timely and interesting advance information for newsletters and mailings
+                                </li>
+                                <li>Provides or coordinates information on forthcoming events to the secretary for
+                                    inclusion in meeting notices, newsletters
+                                    or electronic distribution lists.</li>
+                            </ul>
+                            </p>
+                        </li>
+                        <li><strong>Secretary</strong>
+                            <p>&emsp;&emsp; A person who is part of the office of the club who works over the events
+                                that are conducted.
+                                It is important to note that although the Secretary ensures that these
+                                responsibilities are met, much of the work may be
+                                delegated to paid staff or volunteers.
+                            <ul>
+                                <li>Prepare the agenda for club/group meetings in consultation with the Chairperson.
+                                </li>
+                                <li>Make arrangements including venue, date, times and hospitality for club
+                                    meetings.</li>
+                                <li>Send adequate notice of the meetings.</li>
+                                <li>Collect and collate reports from office bearers.</li>
+                                <li>Take the minutes of meetings.</li>
+                                <li>Write up the minutes as soon as possible after the meeting.</li>
+                            </ul>
+                            </p>
+                        </li>
+                        <li><strong>Treasurer</strong>
+                            <p>&emsp;&emsp; A person who looks after the funds that are involved in the club
+                                The Treasurer is responsible for the managing the flow of money into the club and
+                                for allocating and recording how that
+                                money is spent to run the club.The treasurer also works in conjunction with the
+                                chairperson in planning the development
+                                of the club.
+                            </p>
+                        </li>
+                        <li><strong>Member Chair</strong>
+                            <p>&emsp;&emsp;A person who works with the secretary in all aspects of the club.Ensuring
+                                the smooth functioning of the club by giving enough support to the board.</p>
+                        </li>
+                        <li><strong>Creative and Marketing Lead</strong>
+                            <p>&emsp;&emsp; A person who takes care of the day to day tasks.Collaborates with other
+                                members of the executive committee and board of directors to create and execute
+                                exciting,interesting events for the club constituency.Works closely with secretary and
+                                Excecutive members to promote upcoming events.Also takes care of the Marketing of the club</p>
+                        </li>
+                        <li><strong>Web Master</strong>
+                            <p>&emsp;&emsp; Finds ways to use technology to improve organization's operations (e.g., communications and outreach).Develops and
+                            maintains club website and social media sites;</p>
+                        </li>
+                        <li><strong>Senior Executive Member</strong>
+                            <p>&emsp;&emsp; A person who volunteers in the events that are organized.Publicizes club
+                                activities through email, social media and the club website.Also get Coordinated with the Executive Members.</p>
+                        </li>
+                        <li><strong>Executive Member</strong>
+                            <p>&emsp;&emsp; A person who volunteers in the events that are organized.Publicizes club
+                                activities through email, social media and the club website.</p>
+                        </li>
+                    </ul>
+                    <!--requirement-->
+                </div>
+                <div class="row">
+                    <a class="btn btn-primary" href="{%url 'svceClubMgmtApp:recruit' clublist.name%}" role="button">Register now</a>
+                </div>
+            </div>
+            {%elif clublist.name == "FORESE" and clublist.recruiting%}
+            <div id="forse" class="container">
+                <div class="row">
+                    <h3>Recruiment Details</h3>
+                        <p><strong>&emsp;Prerequisite:</strong>
+                        <ol>
+                            <li>no backlogs</li>
+                            <li>cgpa>8</li>
+                            <li>suitable profile for the post</li>
+                            <li>Should have coding knowledge</li>
+                            <li>A candidate is selected based on questions answered followed by an interview. The
+                                interview will be panelled by the office
+                                bearers as well as the faculty in charge.</li>
+                        </ol>
+                        </p>
+                        <h4>Posting Available:</h4>
+                        <ul>
+                            <li><strong>Vice President</strong> &emsp;(For Final years)</li>
+                            <li><strong>General Secretary</strong>&emsp;(For Pre Final years</li>
+                            <li><strong>Excecutive Director</strong>&emsp;(For Pre Final years)</li>
+                            <li><strong>Tech Head</strong>&emsp;(For Sophomore)</li>
+                            <li><strong>Senior Member</strong>&emsp;(For Sophomore)</li>
+                            <li><strong>Member</strong>&emsp;(For Sophomore)</li>
+                        </ul>
+                        <h5>Post Description:</h5>
+                        <ul>
+                            <li><strong>Vice President</strong>
+                                <p>&emsp;&emsp; A person who manages the entire crew of the club as well as the events
+                                    that are conducted.A Vice President's duties as a social club officer are similar to
+                                    that of the President's duties.
+                                    Presides at meetings in the absence of the president.
+                                <ul>
+                                    <li>Plans, coordinates, and recruits committees to manage a series of meetings and
+                                        programs</li>
+                                    <li>Coordinates programs with the president and the executive committee</li>
+                                    <li>Provides timely and interesting advance information for newsletters and mailings
+                                    </li>
+                                    <li>Provides or coordinates information on forthcoming events to the secretary for
+                                        inclusion in meeting notices, newsletters
+                                        or electronic distribution lists.</li>
+                                </ul>
+                                </p>
+                            </li>
+                            <li><strong>General Secretary</strong>
+                                <p>&emsp;&emsp; A person who is part of the office of the club who works over the events
+                                    that are conducted.
+                                    It is important to note that although the Secretary ensures that these
+                                    responsibilities are met, much of the work may be
+                                    delegated to paid staff or volunteers.
+                                <ul>
+                                    <li>Prepare the agenda for club/group meetings in consultation with the Chairperson.
+                                    </li>
+                                    <li>Make arrangements including venue, date, times and hospitality for club
+                                        meetings.</li>
+                                    <li>Send adequate notice of the meetings.</li>
+                                    <li>Collect and collate reports from office bearers.</li>
+                                    <li>Take the minutes of meetings.</li>
+                                    <li>Write up the minutes as soon as possible after the meeting.</li>
+                                </ul>
+                                </p>
+                            </li>
+                            <li><strong>Tech Head</strong>
+                                <p>&emsp;&emsp; A person who takes care of the technical content for all event that is conducted in the club.
+                                    Also helps Senior member and member working for the event.
+                                </p>
+                            </li>
+                        
+                            <li><strong>Senior Member</strong>
+                                <p>&emsp;&emsp; A person who takes care of the day to day tasks.Collaborates with other
+                                    members of the executive committee and board of directors to create and execute
+                                    exciting,
+                                    interesting events for the club constituency.Works closely with secretary and
+                                    Excecutive members to promote upcoming events</p>
+                            </li>
+                            <li><strong>Member</strong>
+                                <p>&emsp;&emsp; A person who volunteers in the events that are organized.Publicizes club
+                                    activities through email, social media and the club website.</p>
+                            </li>
+                        </ul>
+                </div>
+                <div class="row">
+                    <a class="btn btn-primary" href="{%url 'svceClubMgmtApp:recruit' clublist.name%}" role="button">Register now</a>
+                </div>
+            </div>
+            {%else%}
+            <div class="container">
+                <h1>Recruitment not yet started</h1>
+            </div>
+            {%endif%}
+        </div>
+    </div> 
 {%endblock%}

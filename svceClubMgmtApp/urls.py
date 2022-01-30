@@ -9,5 +9,7 @@ urlpatterns = [
     path('logout',views.signout,name='logout'),
     path('club/<str:nm>',views.club,name='clubPage'),
     path('president/<str:nm>',views.club,name='presidenthome'),
-    path('president/<str:nm>/e_a_r',views.actrec,name='enable_actively_recruit')
+    path('president/<str:nm>/e_a_r',views.actrec,name='enable_actively_recruit'),
+    path('president/<str:nm>/e_a_r',views.actrec,name='disable_actively_recruit'),
+    path('club/<str:nm>/registration',views.register,name='recruit'),
 ]

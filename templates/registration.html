@@ -1,0 +1,99 @@
+{%extends 'base.html'%}
+{%block registration%}
+<div class="form-card">
+    <div class="form-header">
+      <h5>{{clubname}} Application Form</h5>
+      <p>
+        Just answer a few questions<br />
+        so that we can personalize the right experience for you.
+      </p>
+    </div>
+    <div class="form-body">
+      <form method="post" action="">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            placeholder="Enter Name"
+            name="name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="branch">Branch:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="branch"
+            placeholder="Enter Branch"
+            name="branch"
+          />
+        </div>
+        <div class="form-group">
+          <label for="year">Year studying:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="year"
+            placeholder="Enter Year of Studying"
+            name="year"
+          />
+        </div>
+        <div class="form-group">
+          <label for="section">Section:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="section"
+            placeholder="Enter Section"
+            name="section"
+          />
+        </div>
+        <div class="form-group">
+          <label for="phone_number">Phone number:</label>
+          <input
+            type="tel"
+            class="form-control"
+            id="phone_number"
+            placeholder="Enter Phone Number"
+            name="phone_number"
+          />
+        </div>
+        <div class="form-group">
+          <label for="reg_num">Registration Number:</label>
+          <input
+            type="number"
+            class="form-control"
+            id="reg_num"
+            placeholder="Enter Registration Number"
+            name="reg_num"
+            min="0"
+          />
+        </div>
+        <div class="form-group">
+          <label for="c_mid">College Mail Id:</label>
+          <input
+            type="email"
+            class="form-control"
+            id="c_mid"
+            placeholder="Enter College Mail Id"
+            name="c_mid"
+          />
+        </div>
+        <div class="form-group">
+          <label for="lp">LinkedIn Profile:</label>
+          <input
+            type="url"
+            class="form-control"
+            id="lp"
+            placeholder="Enter LinkedIn url"
+            name="lp"
+          />
+        </div>
+        <button type="submit" class="form-button">Submit</button>
+      </form>
+    </div>
+  </div>
+{%endblock%}

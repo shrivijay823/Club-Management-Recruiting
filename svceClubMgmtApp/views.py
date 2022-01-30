@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.hashers import check_password
 from django.urls import reverse
-from .models import Club
+from .models import Club, Volunteers
 
 # Create your views here.
 def index(request):
@@ -96,12 +96,33 @@ def actrec(request,nm):
             club=Club.objects.filter(name=nm)[0]
             username=club.president_username
             if request.user.username==username:
-                club.recruiting=1
+                if(club.recruiting):
+                    club.recruiting=0
+                else:
+                    club.recruiting=1
                 club.save()
                 return HttpResponseRedirect(reverse('svceClubMgmtApp:clubPage',kwargs={'nm':nm}))
             else:return HttpResponse('access denied!')
         else:return HttpRequest('dont have access for students!')
     else:
         return HttpResponseRedirect(reverse('svceClubMgmtApp:index'))
+
+def register(request,nm):
+    if request.method=="POST":
+        form=request.POST
+        name=form['name']
+        branch=form['branch']
+        sec=form['section']
+        yos=form['year']
+        phno=form['phone_number']
+        regno=form['reg_num']
+        cmid=form['c_mid']
+        lp=form['lp']
+        vol=Volunteers(name=name,branch=branch,sec=sec,yos=yos,phoneno=phno,regno=regno,clgmailid=cmid,linkedin=lp)
+        vol.save()
+        return HttpResponseRedirect(reverse('svceClubMgmtApp:recruit',kwargs={'nm':nm}))
+    if request.user.is_authenticated and not request.user.is_superuser:
+        clubname=Club.objects.filter(name=nm)[0].name
+        return render(request,'registration.html',{'clubname':clubname})
 
 
