@@ -1,0 +1,30 @@
+body{
+    background-color: rgb(41, 40, 40);
+    color: white;
+}
+nav{
+    background-color: rgb(14, 14, 14);
+}
+h2{
+    text-align: center;
+}
+#navbarNav{
+    width:auto;
+    float: right;
+}
+
+#login-form{
+    margin-top: 10px;
+    margin-left: auto;
+    background-color: aliceblue;
+    width: 50%;
+    padding: 20px;
+
+}
+#register-page{
+    margin-top: 10px;
+    margin-left: auto;
+    background-color: aliceblue;
+    width: 50%;
+    padding: 20px;
+}

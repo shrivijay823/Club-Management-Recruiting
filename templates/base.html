@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVCE</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        body{
+            background-color: rgb(41, 40, 40);
+            color: white;
+        }
+        nav{
+            background-color: rgb(14, 14, 14);
+            padding: 20px;
+            top: 0;
+            position: fixed;
+        }
+        h2{
+            text-align: center;
+        }
+        nav a{
+            color: rgb(255, 255, 255);
+        }
+        nav a:hover{
+            text-decoration: none;
+            color: white;
+            text-shadow: 2px rgb(191, 23, 23);
+        }
+        #brand{
+            width: fit-content;
+            display: inline;
+            margin-left: 2px;
+            font-weight: bold;
+        }
+        #navbarNav{
+            list-style-type: none;
+            width:auto;
+            float: right;
+        }
+        #items{
+            position: absolute;
+
+        }
+        #items{
+            display: none;
+        }
+        #dropdown:hover #items{
+            display: inline-block;
+        }
+        #login-form{
+            color: black;
+            margin-top: 10px;
+            margin-left: auto;
+            background-color: aliceblue;
+            width: 40%;
+            padding: 20px;
+            border-radius: 2px;
+
+        }
+        #register-page{
+            color: black;
+            margin-top: 10px;
+            margin-left: auto;
+            background-color: aliceblue;
+            width: 40%;
+            padding: 20px;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div id="brand">
+            <a href="/">SVCE Club</a>
+        </div>
+        <ul classs="navbar-nav" id="navbarNav">
+            {%if user.is_authenticated%}
+            <div id="dropdown">
+                <li class="nav-item">{{user.first_name}}</li>
+                <div id="items">
+                    <li class="nav-item"><a href="{% url 'svceClubMgmtApp:logout' %}">Logout</a></li>
+                </div>                
+            </div>
+            {%else%}
+            <li><a href="login">Login</a></li>
+            {%endif%}
+        </ul>
+    </nav>
+    {%block signinpage%}{%endblock%}
+    {%block register%}{%endblock%}
+    {%block index%}{%endblock%}
+    {%block clubPage%}{%endblock%}
+</body>
+</html>

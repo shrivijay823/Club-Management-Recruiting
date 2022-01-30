@@ -1,0 +1,67 @@
+{%extends 'base.html'%}
+{%load static%}
+{%block clubPage%}
+    <style>
+        .clubcontent{
+            width: 50%;
+            margin: auto;
+        }
+        button{
+            margin: auto;
+        }
+        #sidebar{
+            height: 100%;
+            width: 200px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background-color: rgb(212, 209, 209);
+            padding-top: 60px;
+        }
+        #sidebar li{
+            list-style-type: none;
+        }
+        #sidebar a{
+            color: black;
+        }
+        #contents{
+            margin-top: 10px;
+        }
+    </style>
+    <div id="sidebar">
+        <ul>       
+            <li><a href="">About</a></li>
+            <li><a href="">Events</a></li>
+            <li><a href="">Upcoming Events</a></li>
+        </ul>
+    </div>
+    <div id="contents">
+        <div  class="clubcontent" id="about">
+            <h1 id="ClubName">{{clublist.name}}</h1>   
+            <p>
+                {%for p in clublist.about%}
+                {{p}}<br><br>
+                {%endfor%}
+            </p>
+        </div>
+        {%if user.is_authenticated and not user.is_superuser and clublist.recruiting%}
+        <div style="text-align: center;">
+            <a href="#" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Actively recruiting</a>
+        </div>
+        {%elif user.is_authenticated and user.is_superuser and clublist.recruiting%}
+        <div style="text-align: center;">
+            <a href="{%url 'svceClubMgmtApp:enable_actively_recruit' clublist.name%}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Stop Recruitment</a>
+        </div>
+        {%elif user.is_authenticated and user.is_superuser and not clublist.recruiting%}
+        <div style="text-align: center;">
+            <a href="{%url 'svceClubMgmtApp:enable_actively_recruit' clublist.name%}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Recruit</a>
+        </div>
+        {%endif%}
+        <div class="clubcontent" id="event">
+            <h3>Past Events</h3>
+        </div>
+
+    </div>
+    
+{%endblock%}

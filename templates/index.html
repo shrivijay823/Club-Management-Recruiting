@@ -1,0 +1,49 @@
+{%extends 'base.html'%}
+{%load static%}
+{%block index%}
+<style>
+    #clublist{
+        width: fit-content;
+        margin: auto;
+        padding: 0;
+        list-style-type: none;
+    }
+    .club{
+        margin-top: 100px;
+    }
+    #clublist a:hover{
+        text-decoration: none;
+    }
+    .imgContainer{
+        width: 40%;
+        margin: auto;
+    }
+    .imgContainer img{
+        width: 50%;
+    }
+    .clubname{
+        text-align: center;
+    }
+    .clubname{
+        color: white;
+    }
+</style>
+<ul id="clublist">
+    {%for club in clublist%}
+    <li class="club">
+        <div class="container">
+            <a href="club/{{club.name}}">
+                <div class="imgContainer">
+                    <img
+                        src='/static/{{club.logo_url}}'
+                        alt="">
+                </div>
+                <div class="clubname">
+                    <p>{{club.name}}</p>
+                </div>
+            </a>
+        </div>
+    </li>
+    {%endfor%}
+</ul>
+{%endblock%}
